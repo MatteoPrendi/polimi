@@ -26,7 +26,8 @@ void libera_lista(linked_list_node* nodo) {
 
 void elimina_elemento(linked_list_node** primo, int da_cancellare) { 
     if (*primo == NULL) { 
-        printf("L'elemento '%d' non e' stato trovato\n", da_cancellare); 
+        printf("L'elemento '%d' non e' stato trovato\n", da_cancellare);
+        libera_lista(*primo);
         exit(1);
     } 
  
