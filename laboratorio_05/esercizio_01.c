@@ -34,23 +34,20 @@ int main() {
     int entrata = 0;
 
     printf("Per terminare inserire un numero non-positivo:\n");
-    do {
-        printf("Inserisci il numero: ");
-        scanf("%d", &entrata);
+    while (printf("Inserisci il numero: "), scanf("%d", &entrata), entrata > 0)
+    {
+        linked_list_node* nuovo_nodo = malloc(sizeof(linked_list_node));
+        nuovo_nodo -> numero = entrata;
+        nuovo_nodo -> prossimo = NULL;
         
-        if (entrata > 0) {
-            linked_list_node* nuovo_nodo = malloc(sizeof(linked_list_node));
-            nuovo_nodo -> numero = entrata;
-            nuovo_nodo -> prossimo = NULL;
-            
-            if (primo == NULL) {
-                primo = ultimo = nuovo_nodo;
-            } else {
-                ultimo -> prossimo = nuovo_nodo;
-                ultimo = nuovo_nodo;
-            }
+        if (primo == NULL) {
+            primo = nuovo_nodo;
+            ultimo = nuovo_nodo;
+        } else {
+            ultimo -> prossimo = nuovo_nodo;
+            ultimo = nuovo_nodo;
         }
-    } while (entrata > 0);
+    }
 
     stampa_lista(primo);
     libera_lista(primo);
