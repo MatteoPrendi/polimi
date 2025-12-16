@@ -30,15 +30,14 @@ void elimina_elemento(linked_list_node** primo, int da_cancellare) {
         exit(1);
     } 
  
-    linked_list_node* prossimo = (*primo) -> prossimo;
-    if ((*primo) -> numero == da_cancellare) { 
+    if ((*primo)->numero == da_cancellare) { 
         linked_list_node* temporanea = *primo;
-        *primo = prossimo;
+        *primo = (*primo)->prossimo;
         free(temporanea);
         return;
     } 
- 
-    elimina_elemento(&prossimo, da_cancellare);
+
+    elimina_elemento(&((*primo)->prossimo), da_cancellare);
 }
 
 int main() {
@@ -66,7 +65,7 @@ int main() {
     printf("Inserici numero da cancellare: ");
     scanf("%d", &da_cancellare);
 
-    elimina_elemento(primo, da_cancellare);
+    elimina_elemento(&primo, da_cancellare);
     stampa_lista(primo);
     libera_lista(primo);
 
