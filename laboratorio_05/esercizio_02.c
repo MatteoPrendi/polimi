@@ -48,6 +48,9 @@ void elimina_elemento(linked_list_node** primo, int da_cancellare) {
         nodo_precedente = nodo_attuale;
         nodo_attuale = nodo_attuale -> prossimo;
     }
+
+    printf("L'elemento '%d' non e' stato trovato", da_cancellare);
+    exit(1);
 }
 
 int main() {
